@@ -1,11 +1,5 @@
 # DevTools
 
-<img width="1703" height="1241" alt="image" src="https://github.com/user-attachments/assets/c6936054-a8f1-4c7b-a7b9-04180e720742" />
-
-
-<img width="1702" height="1235" alt="image" src="https://github.com/user-attachments/assets/74a36959-c1fd-4a3d-a0c9-6794ee472207" />
-
-
 > **Unified, MCP-native developer toolkit** — bundles **75 operations** across 30+ tools behind a single CLI, a local web UI, and an MCP stdio server. Offline-first. One static binary. Plugin-extensible.
 
 ```
@@ -32,6 +26,11 @@
         │  cryptox totpx codefmt mathx ipx                 │
         └──────────────────────────────────────────────────┘
 ```
+
+<img width="1703" height="1241" alt="image" src="https://github.com/user-attachments/assets/c6936054-a8f1-4c7b-a7b9-04180e720742" />
+
+
+<img width="1702" height="1235" alt="image" src="https://github.com/user-attachments/assets/74a36959-c1fd-4a3d-a0c9-6794ee472207" />
 
 ---
 
