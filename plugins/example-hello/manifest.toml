@@ -1,0 +1,9 @@
+sdk = 1
+name = "example-hello"
+version = "0.1.0"
+description = "Demo plugin contributing a 'hello' Tool."
+entrypoint = "plugin"
+
+[[tools]]
+tool = "hello"
+description = "Greets the caller."

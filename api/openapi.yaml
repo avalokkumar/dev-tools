@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: DevForge HTTP API
+  version: 0.0.0-dev
+  description: |
+    JSON HTTP API exposing every Operation in the DevForge Registry.
+    Generated from Go struct tags via scripts/gen-openapi.sh; do not edit by hand
+    once Phase B lands.
+servers:
+  - url: http://127.0.0.1:8787
+    description: Local devforge ui
+paths:
+  /healthz:
+    get:
+      summary: Liveness probe
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status:
+                    type: string
+                    enum: [ok]
+components:
+  schemas:
+    Diagnostic:
+      type: object
+      required: [code, message, severity]
+      properties:
+        code:
+          type: string
+          description: Stable, dotted-path identifier (e.g. JSON.PARSE.UNEXPECTED_TOKEN).
+        message:
+          type: string
+        severity:
+          type: integer
+          enum: [0, 1, 2]
+          description: 0=info, 1=warn, 2=error
+        span:
+          $ref: "#/components/schemas/Span"
+    Span:
+      type: object
+      required: [startLine, startCol, endLine, endCol]
+      properties:
+        startLine: { type: integer }
+        startCol:  { type: integer }
+        endLine:   { type: integer }
+        endCol:    { type: integer }

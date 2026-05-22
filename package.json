@@ -1,0 +1,15 @@
+{
+  "name": "devforge-monorepo",
+  "version": "0.0.0-dev",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev:web": "pnpm -C web dev",
+    "dev:backend": "go run ./cmd/devforge ui",
+    "dev:all": "trap 'kill 0' INT TERM; (go run ./cmd/devforge ui) & (pnpm -C web dev) & wait",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "e2e:web": "pnpm -C web e2e"
+  },
+  "packageManager": "pnpm@10.29.3"
+}

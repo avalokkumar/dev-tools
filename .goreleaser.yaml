@@ -1,0 +1,97 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+    - bash scripts/build-web.sh
+
+builds:
+  - id: devforge
+    main: ./cmd/devforge
+    binary: devforge
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s -w
+      - -X github.com/devforge/devforge/internal/version.Version={{.Version}}
+      - -X github.com/devforge/devforge/internal/version.Commit={{.ShortCommit}}
+      - -X github.com/devforge/devforge/internal/version.Date={{.Date}}
+
+archives:
+  - id: devforge
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+    format_overrides:
+      - goos: windows
+        formats: ["zip"]
+    files:
+      - LICENSE*
+      - README.md
+      - docs/PRD.md
+      - docs/architecture.md
+      - docs/terms.md
+      - install.sh
+      - uninstall.sh
+      - packaging/INSTALL.md
+
+checksum:
+  name_template: "checksums.txt"
+  algorithm: sha256
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-snapshot"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "Merge pull request"
+      - "Merge branch"
+
+release:
+  draft: true
+  prerelease: auto
+  extra_files:
+    - glob: install.sh
+    - glob: uninstall.sh
+
+# Homebrew tap publishing.
+#
+# Requires a tap repository (e.g. github.com/devforge/homebrew-tap) and a
+# personal-access token with `contents: write` exposed as the
+# `HOMEBREW_TAP_GITHUB_TOKEN` secret in the release workflow.
+#
+# Comment this block out to skip Homebrew publishing temporarily.
+brews:
+  - name: devforge
+    ids: [devforge]
+    repository:
+      owner: devforge
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    commit_author:
+      name: devforge-bot
+      email: bot@devforge.dev
+    homepage: "https://github.com/devforge/devforge"
+    description: "Unified, MCP-native developer toolkit (CLI + Web UI + MCP server)"
+    license: "MIT"
+    skip_upload: auto    # don't publish formulas for prereleases
+    test: |
+      assert_match(/"version"\s*:/, shell_output("#{bin}/devforge version --json"))
+      assert_match(/uuid_generate/,  shell_output("#{bin}/devforge run --list"))
+    install: |
+      bin.install "devforge"
+      doc.install "README.md", "LICENSE" if File.exist?("README.md")

@@ -1,0 +1,8 @@
+import{r as l,j as a,F as n,f as c}from"./index-qUUxopbW.js";import{k as m,E as x,a as p,c as f,D as g,ax as j}from"./Input-ClLWRu-h.js";import{u as h,T as u}from"./ToolPage-Dvu9Ksnc.js";import{C as i,a as r,B as d}from"./Card-BxtjsK-V.js";import{B as v}from"./Button-05bF5-xG.js";import{P as C}from"./play-sQ-ig8C-.js";import{C as N}from"./circle-check-B4OtulSh.js";const k=c("k8s"),E=`apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: default
+data:
+  LOG_LEVEL: info
+`;function T(){const[e,o]=l.useState(E),s=h(t=>j(t));return a.jsx(u,{tool:k,children:a.jsxs("div",{className:"grid grid-cols-1 lg:grid-cols-2 gap-md",children:[a.jsxs(i,{children:[a.jsx(r,{title:"Manifest",icon:a.jsx(n,{className:"h-5 w-5"})}),a.jsx(m,{rows:16,value:e,onChange:t=>o(t.target.value)}),a.jsxs(v,{onClick:()=>s.run(e),loading:s.loading,fullWidth:!0,className:"mt-md",disabled:!e.trim(),children:[a.jsx(C,{className:"h-4 w-4"})," Validate"]})]}),a.jsxs(i,{children:[a.jsx(r,{title:"Result",trailing:s.data&&a.jsxs("div",{className:"flex gap-2",children:[s.data.kind&&a.jsx(d,{children:s.data.kind}),s.data.apiVersion&&a.jsx(d,{tone:"info",children:s.data.apiVersion})]})}),s.error?a.jsx(x,{error:s.error}):s.data?a.jsxs("div",{className:"flex flex-col gap-md",children:[a.jsxs("div",{className:`flex items-center gap-3 p-md rounded-lg ${s.data.valid?"bg-tertiary-fixed text-on-tertiary-fixed":"bg-error/10 text-error"}`,children:[s.data.valid?a.jsx(N,{className:"h-6 w-6"}):a.jsx(f,{className:"h-6 w-6"}),a.jsx("span",{className:"font-body-md font-semibold",children:s.data.valid?"Valid manifest":"Invalid manifest"})]}),a.jsx(g,{items:s.data.diagnostics})]}):a.jsx(p,{title:"Validation result appears here"})]})]})})}export{T as default};

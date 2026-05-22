@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light theme (default) */
+  :root {
+    --color-surface: #f6faf7;
+    --color-surface-dim: #d6dbd8;
+    --color-surface-bright: #f6faf7;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #f0f5f2;
+    --color-surface-container: #eaefec;
+    --color-surface-container-high: #e4e9e6;
+    --color-surface-container-highest: #dfe4e1;
+    --color-surface-variant: #dfe4e1;
+    --color-on-surface: #171d1b;
+    --color-on-surface-variant: #45464c;
+    --color-inverse-surface: #2c3230;
+    --color-inverse-on-surface: #edf2ef;
+    --color-outline: #76777d;
+    --color-outline-variant: #c6c6cd;
+
+    --color-shadow-grey: #212738;
+    --color-vibrant-coral: #f97068;
+    --color-lemon-lime: #d1d646;
+    --color-platinum: #edf2ef;
+    --color-sky-aqua: #57c4e5;
+
+    --color-primary: #0c1222;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #212738;
+    --color-on-primary-container: #888ea3;
+    --color-inverse-primary: #c0c6dc;
+    --color-secondary: #a93532;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #fd736b;
+    --color-on-secondary-container: #6f070e;
+    --color-tertiary: #131400;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #282900;
+    --color-tertiary-fixed: #d7dc6a;
+    --color-on-tertiary-fixed: #1a1d00;
+    --color-on-tertiary-container: #909400;
+    --color-error: #ba1a1a;
+    --color-on-error: #ffffff;
+    --color-error-container: #ffdad6;
+    --color-on-error-container: #93000a;
+    --color-background: #f6faf7;
+    --color-on-background: #171d1b;
+  }
+
+  /* Dark theme overrides — activated by `html.dark` */
+  html.dark {
+    --color-surface: #0e1311;
+    --color-surface-dim: #0e1311;
+    --color-surface-bright: #353a38;
+    --color-surface-container-lowest: #090d0c;
+    --color-surface-container-low: #171d1b;
+    --color-surface-container: #1b211f;
+    --color-surface-container-high: #262b29;
+    --color-surface-container-highest: #313633;
+    --color-surface-variant: #3f4945;
+    --color-on-surface: #dde4df;
+    --color-on-surface-variant: #b9c4be;
+    --color-inverse-surface: #dde4df;
+    --color-inverse-on-surface: #2c3230;
+    --color-outline: #899390;
+    --color-outline-variant: #3f4945;
+
+    --color-platinum: #1b211f;
+
+    --color-primary: #c0c6dc;
+    --color-on-primary: #29304a;
+    --color-primary-container: #3f4663;
+    --color-on-primary-container: #dde2f8;
+    --color-inverse-primary: #585e7c;
+    --color-secondary: #ffb4ab;
+    --color-on-secondary: #690005;
+    --color-secondary-container: #fd736b;
+    --color-on-secondary-container: #ffdad6;
+    --color-tertiary: #babd2c;
+    --color-on-tertiary: #303300;
+    --color-tertiary-container: #474a00;
+    --color-tertiary-fixed: #d7dc6a;
+    --color-on-tertiary-fixed: #1a1d00;
+    --color-on-tertiary-container: #d7dc6a;
+    --color-error: #ffb4ab;
+    --color-on-error: #690005;
+    --color-error-container: #93000a;
+    --color-on-error-container: #ffdad6;
+    --color-background: #0e1311;
+    --color-on-background: #dde4df;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-on-background font-body-md;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  *:focus-visible {
+    @apply outline-none ring-2 ring-sky-aqua ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-outline-variant rounded-full;
+  }
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(33, 39, 56, 0.04) 0%,
+      rgba(33, 39, 56, 0.08) 50%,
+      rgba(33, 39, 56, 0.04) 100%
+    );
+    background-size: 800px 100%;
+    @apply animate-shimmer;
+  }
+}

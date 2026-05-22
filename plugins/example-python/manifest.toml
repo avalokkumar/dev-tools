@@ -1,0 +1,9 @@
+sdk = 1
+name = "example-python"
+version = "0.1.0"
+description = "Demo plugin authored in Python (proves language-agnostic transport)."
+entrypoint = "plugin"
+
+[[tools]]
+tool = "py"
+description = "Python-side string utilities."
