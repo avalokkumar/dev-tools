@@ -1,6 +1,7 @@
 # DevTools
 
-<img width="1705" height="1240" alt="image" src="https://github.com/user-attachments/assets/36b73167-da2d-4266-8f29-87e92dcd9e02" />
+<img width="1703" height="1241" alt="image" src="https://github.com/user-attachments/assets/c6936054-a8f1-4c7b-a7b9-04180e720742" />
+
 
 <img width="1702" height="1235" alt="image" src="https://github.com/user-attachments/assets/74a36959-c1fd-4a3d-a0c9-6794ee472207" />
 
