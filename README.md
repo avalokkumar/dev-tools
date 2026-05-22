@@ -1,5 +1,10 @@
 # DevTools
 
+<img width="1705" height="1240" alt="image" src="https://github.com/user-attachments/assets/36b73167-da2d-4266-8f29-87e92dcd9e02" />
+
+<img width="1702" height="1235" alt="image" src="https://github.com/user-attachments/assets/74a36959-c1fd-4a3d-a0c9-6794ee472207" />
+
+
 > **Unified, MCP-native developer toolkit** — bundles **75 operations** across 30+ tools behind a single CLI, a local web UI, and an MCP stdio server. Offline-first. One static binary. Plugin-extensible.
 
 ```
